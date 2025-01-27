@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "target": "es5",
+      "lib": ["es5", "dom"],
+      "types": ["cypress", "node", "@testing-library/cypress"],
+      "allowJs": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "moduleDetection": "force",
+      "isolatedModules": true,
+      "strict": true,
+      "strictFunctionTypes": true,
+      "noUncheckedIndexedAccess": true,
+      "noImplicitOverride": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+      "module": "NodeNext",
+      "noEmit": true
+    },
+    "include": ["cypress/**/*.ts"],
+    "exclude": ["node_modules"]
+  }
