@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "854f06ec-ae0f-4070-82e8-7cced5cde978",
+		"name": "ATRAssessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41587739"
+	},
+	"item": [
+		{
+			"name": "Spotify",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Define the expected values\r",
+							"const expectedValues = {\r",
+							"    album: {name: \"Planet Pit (Deluxe Version)\", totalTracks: 16},\r",
+							"    id: \"4QNpBfC0zvjKqPJcyqBy9W\",\r",
+							"    name: \"Give Me Everything (feat. Nayer)\",\r",
+							"    popularity: 84,\r",
+							"    trackNumber: 2\r",
+							"};\r",
+							"\r",
+							"// Parse the response body\r",
+							"const responseBody = pm.response.json().tracks[0];\r",
+							"\r",
+							"// Perform validations\r",
+							"pm.test(\"Validate album name\", function () {\r",
+							"    pm.expect(responseBody.album.name).to.eql(expectedValues.album.name);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate total tracks\", function () {\r",
+							"    pm.expect(responseBody.album.total_tracks).to.eql(expectedValues.album.totalTracks);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate track ID\", function () {\r",
+							"    pm.expect(responseBody.id).to.eql(expectedValues.id);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate track name\", function () {\r",
+							"    pm.expect(responseBody.name).to.eql(expectedValues.name);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate popularity\", function () {\r",
+							"    pm.expect(responseBody.popularity).to.eql(expectedValues.popularity);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate track number\", function () {\r",
+							"    pm.expect(responseBody.track_number).to.eql(expectedValues.trackNumber);\r",
+							"});\r",
+							"\r",
+							"// Log values to console for debugging\r",
+							"console.log(\"Response body:\", responseBody);\r",
+							"// Validate the response body structure\r",
+							"pm.test(\"Response body structure is valid\", function () {\r",
+							"    const responseBody = pm.response.json().tracks[0];\r",
+							"    pm.expect(responseBody).to.have.property('album');\r",
+							"    pm.expect(responseBody).to.have.property('id');\r",
+							"    pm.expect(responseBody).to.have.property('name');\r",
+							"    pm.expect(responseBody).to.have.property('popularity');\r",
+							"    pm.expect(responseBody).to.have.property('track_number');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BQDC6jl_pixgbivjX2-hHBit_VVx441ztl9lRv_mmMCNsgfd7oA6KGfw8UWZxB5F4Sy0sM3YUfOoeozuCC0QUkY0e8ZP4fvD9Xcr4apE4vmJ5zfVQmE0HW7ALeNpIu9VR9cIGFmt_QUKMIoVl8jyB1msXwtuExsVxnwLr8_oxK6xu7qiw7BlDxZklNgvbJc24zVxtKq5VNAaI1ayFAUm5MCc8-2T48hcrOjd_GEQuY4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/top-tracks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"artists",
+						"0TnOYISbd1XYRBk9myaseg",
+						"top-tracks"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
