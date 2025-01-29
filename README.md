@@ -3,7 +3,7 @@
 ## 1. API Tests Using Cypress
 
 ### Steps:
-1. **Install Cypress:**
+1. **Clone the repo, navigate to cypress_api_fw folder and install necessary dependencies:**
    ```sh
    npm i
    ```
