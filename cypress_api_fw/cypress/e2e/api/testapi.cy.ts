@@ -1,14 +1,18 @@
 import { assertResponse } from "../../support/api/utils/utils";
 import { HttpStatus } from "../../support/api/constants/commonValues";
 import { spotifyService } from "../../support/api/services/spotifyService";
+import { tokenService } from "../../support/api/services/tokenService";
+
 
 
 describe( "API tests | Spotify API", ()=>{
-
+    beforeEach(() => {
+        tokenService.getToken().then((response)=>{
+            sessionStorage.setItem("accessToken", response.body.access_token)
+        })
+    })
     
     it("GET /artists/{id}/top-tracks | 200", () =>{
-        sessionStorage.setItem("accessToken", "")
-
         const valuesToCheck = {
             album: {name:"Planet Pit (Deluxe Version)", totalTracks: 16},
             id: "4QNpBfC0zvjKqPJcyqBy9W",
@@ -36,7 +40,6 @@ describe( "API tests | Spotify API", ()=>{
 
     
     it("GET /artists/{id}/top-tracks | 404", () =>{
-        sessionStorage.setItem("accessToken", "")
         spotifyService.getArtists("0TnOYISbd1XYRBk9myasek").then((response)=>{
             expect(response.status).to.eq(HttpStatus.NotFound, `Status is ${HttpStatus.NotFound}`);
 
