@@ -3,8 +3,7 @@ export const getAccessToken = (): string | null => {
 }
 
 export const assertResponse = (valuesToCheck: any) => {
-    cy.get("@topTracksResponse").then((r:any)=>{
-       
+    cy.get("@topTracksResponse").then((r:any)=>{ 
         const track = r.body.tracks.find(
             (t:any) =>
                 t.album.name === valuesToCheck.album.name &&
@@ -13,10 +12,8 @@ export const assertResponse = (valuesToCheck: any) => {
                 t.name === valuesToCheck.name &&
                 t.popularity === valuesToCheck.popularity &&
                 t.track_number === valuesToCheck.trackNumber
-        );
-      
+        );   
         // Assert that the track exists
         expect(track).to.not.be.undefined;
-
     })
 }

@@ -3,9 +3,7 @@ const clientSecret = 'REPLACE_WITH_CLIENT_SECRET';
 const authHeader = 'Basic ' + btoa(clientId + ':' + clientSecret); // Encode in base64
 
 export class TokenService {
-
     getToken = (): Cypress.Chainable<Cypress.Response<any>> => {
-
         const options = {
             failOnStatusCode: false,
             method: "POST",
@@ -18,12 +16,8 @@ export class TokenService {
               grant_type: 'client_credentials'
             },
             form: true // Sends body as application/x-www-form-urlencoded
-  
         };
-
         return cy.request({...options})
-
     }
 }
-
 export const tokenService = new TokenService()
